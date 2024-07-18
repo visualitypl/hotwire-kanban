@@ -1,0 +1,6 @@
+<%= turbo_stream.append dom_id(@card.board_column, :column_body) do %>
+  <%= render 'cards/card', card: @card %>
+<% end %>
+<%= turbo_stream.replace dom_id(@card.board_column, :new_card) do %>
+  <%= render 'cards/new_card', board_column: @card.board_column %>
+<% end %>

@@ -15,6 +15,7 @@ class BoardColumnsController < ApplicationController
     respond_to do |format|
       if @board_column.save
         format.html { redirect_to board_url(@board), notice: "BoardColumn was successfully created." }
+        format.turbo_stream
       else
         format.html { render :new, status: :unprocessable_entity }
       end

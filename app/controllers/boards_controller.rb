@@ -22,6 +22,7 @@ class BoardsController < ApplicationController
     respond_to do |format|
       if @board.save
         format.html { redirect_to boards_url, notice: "Board was successfully created." }
+        format.turbo_stream
       else
         format.html { render :new, status: :unprocessable_entity }
       end
