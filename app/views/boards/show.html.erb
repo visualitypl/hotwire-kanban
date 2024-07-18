@@ -1,3 +1,4 @@
+<%= turbo_stream_from dom_id(@board) %>
 <div class="board-header w-100 px-3">
   <div class="row">
     <div class="d-flex justify-content-between">
@@ -13,7 +14,7 @@
 </div>
 
 <div class="board-container">
-  <div id= <%= dom_id(@board, 'columns') %> class="board-scroll p-3" data-controller="sortable" data-sortable-group-value="<%= @board.id %>" data-sortable-url-value="<%= card_path(":id") %>">
+  <div id= <%= dom_id(@board, 'columns') %>, class="board-scroll p-3" data-controller="sortable" data-sortable-group-value="<%= @board.id %>" data-sortable-url-value="<%= card_path(":id") %>">
     <% @board_columns.each do |board_column| %>
       <%= render partial: 'board_columns/board_column', locals: { board_column: board_column } %>
     <% end %>
