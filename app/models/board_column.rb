@@ -6,5 +6,7 @@ class BoardColumn < ApplicationRecord
 
   validates :name, presence: true
 
-  broadcasts_to ->(board_column) { "board_#{board_column.board_id}" }, inserts_by: :append, target: [ :board, :columns ]
+  broadcasts_to ->(board_column) { "board_#{board_column.board_id}" },
+                target: ->(board_column) { "columns_board_#{board_column.board.id}" },
+                inserts_by: :append
 end

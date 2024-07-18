@@ -18,6 +18,8 @@
     <% @board_columns.each do |board_column| %>
       <%= render partial: 'board_columns/board_column', locals: { board_column: board_column } %>
     <% end %>
+    <%= turbo_frame_tag dom_id(@board, 'columns') do %>
+    <% end %>
     <%= turbo_frame_tag dom_id(BoardColumn.new) %>
   </div>
 </div>
