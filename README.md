@@ -9,12 +9,24 @@ This application uses:
 - sqlite 3
 - redis
 
+If you are using [asdf](https://asdf-vm.com/guide/getting-started.html), you can get them by running:
+```bash
+asdf plugin add ruby https://github.com/asdf-vm/asdf-ruby.git
+asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git
+asdf plugin-add redis https://github.com/smashedtoatoms/asdf-redis.git
+
+asdf install
+asdf exec redis-server
+```
+
 Have them installed, clone repo and run:
 
-```
+```bash
 $ bundle
 $ rails db:setup
 ```
+
+
 
 You can run `rails db:seed` many times to have more data.
 
