@@ -1,0 +1,20 @@
+<div class="card">
+  <div class="card-body">
+    <div class="d-flex justify-content-between align-items-center mb-2">
+      <h5 class="card-title mb-0">
+        <%= card.title %>
+      </h5>
+      <div class="d-flex gap-2">
+        <%= link_to edit_card_path(card), class: 'text-default' do %>
+          <i class="fa-solid fa-pencil"></i>
+        <% end %>
+        <%= link_to card_path(card), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: 'text-danger' do %>
+          <i class="fa-solid fa-trash"></i>
+        <% end %>
+      </div>
+    </div>
+    <div class="card-text">
+      <%= card.description %>
+    </div>
+  </div>
+</div>

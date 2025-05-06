@@ -19,7 +19,14 @@
         <%= render partial: 'boards/column_header', locals: { column: column } %>
         <div id= <%= dom_id(column, :column_body) %>, class="board-column-body">
           <% column.cards.order(:position).each do |card| %>
-            <div> card.title </div>
+            <div class="my-1">
+              <%= render partial: 'cards/card', locals: { card: card } %>
+            </div>
+          <% end %>
+        </div>
+        <div class="board-column-footer text-center mt-4">
+          <%= link_to new_card_url(board_column_id: column.id), class: 'text-success fs-1' do %>
+            <div class="fa-solid fa-plus"></div>
           <% end %>
         </div>
       </div>

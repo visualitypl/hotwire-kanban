@@ -5,5 +5,7 @@ Rails.application.routes.draw do
     resources :board_columns, except: [ :index, :show ]
   end
 
+  resources :cards,  except: [ :index ]
+
   get "up" => "rails/health#show", as: :rails_health_check
 end

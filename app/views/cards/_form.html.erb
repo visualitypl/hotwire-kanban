@@ -1,0 +1,28 @@
+<%= form_with(model: @card, local: true, class: 'col-12') do |form| %>
+  <% if @card.errors.any? %>
+    <% @card.errors.full_messages.each do |message| %>
+      <p class="text-center text-orange-600">
+        <%= message %>
+      </p>
+    <% end %>
+  <% end %>
+
+  <%= form.hidden_field :board_column_id %>
+
+  <div class="form-group my-2">
+    <%= form.label :title %>
+    <%= form.text_field :title, class: 'form-control' %>
+  </div>
+
+  <div class="form-group my-2">
+    <%= form.label :description %>
+    <%= form.text_area :description, class: 'form-control', rows: 4 %>
+  </div>
+
+  <div class="row">
+    <div class="actions mt-2 text-center">
+      <%= link_to 'Cancel', board_path(@card.board), class: 'btn btn-outline-info' %>
+      <%= form.submit 'Save', class: 'btn btn-outline-primary' %>
+    </div>
+  </div>
+<% end %>
