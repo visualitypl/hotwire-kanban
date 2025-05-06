@@ -22,10 +22,10 @@
               </h5>
               <div class="d-flex gap-2">
                 <%= link_to edit_board_path(board), class: 'text-default' do %>
-                  <i class="bi bi-pencil text-primary-dark-600"></i>
+                  <i class="fa-solid fa-pencil text-primary-dark-600"></i>
                 <% end %>
                 <%= link_to board, data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: 'text-danger' do %>
-                  <i class="bi bi-trash text-primary-dark-600"></i>
+                  <i class="fa-solid fa-trash text-primary-dark-600"></i>
                 <% end %>
               </div>
             </div>
