@@ -121,6 +121,10 @@ GEM
       activesupport (>= 6.1)
     i18n (1.14.7)
       concurrent-ruby (~> 1.0)
+    importmap-rails (2.1.0)
+      actionpack (>= 6.0.0)
+      activesupport (>= 6.0.0)
+      railties (>= 6.0.0)
     io-console (0.8.0)
     irb (1.15.2)
       pp (>= 0.6.0)
@@ -196,11 +200,6 @@ GEM
       prettyprint
     prettyprint (0.2.0)
     prism (1.4.0)
-    propshaft (1.1.0)
-      actionpack (>= 7.0.0)
-      activesupport (>= 7.0.0)
-      rack
-      railties (>= 7.0.0)
     psych (5.2.4)
       date
       stringio
@@ -391,9 +390,9 @@ DEPENDENCIES
   brakeman
   debug
   factory_bot_rails (~> 6.4)
+  importmap-rails (~> 2.1)
   jbuilder
   kamal
-  propshaft
   puma (>= 5.0)
   rails (~> 8.0.2)
   rspec-rails (~> 8.0.0)
@@ -402,6 +401,7 @@ DEPENDENCIES
   solid_cable
   solid_cache
   solid_queue
+  sprockets-rails (~> 3.5.2)
   sqlite3 (>= 2.1)
   thruster
   tzinfo-data
