@@ -41,7 +41,7 @@ RSpec.describe "/boards", type: :request do
         expect {
           post boards_url, params: { board: valid_attributes }
         }.to change(Board, :count).by(1)
-        expect(response).to redirect_to(board_url(Board.last))
+        expect(response).to redirect_to(boards_url)
       end
     end
 
