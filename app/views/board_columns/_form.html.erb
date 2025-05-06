@@ -1,0 +1,19 @@
+<%= form_with(model: [@board, @board_column], local: true, class: 'col-12') do |form| %>
+  <% if @board_column.errors.any? %>
+    <% @board_column.errors.full_messages.each do |message| %>
+      <p class="text-center text-orange-600">
+        <%= message %>
+      </p>
+    <% end %>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :name %>
+    <%= form.text_field :name, class: 'form-control' %>
+  </div>
+
+  <div class="actions mt-2 text-center">
+    <%= link_to 'Cancel', board_path(@board_column.board), class: 'btn btn-outline-info' %>
+    <%= form.submit 'Save', class: 'btn btn-outline-primary' %>
+  </div>
+<% end %>

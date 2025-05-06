@@ -5,12 +5,12 @@
   <div class="d-flex flex-col ms-auto">
     <div class="p-1">
       <%= link_to edit_board_column_path(column) do %>
-        <div class="bi bi-pencil text-primary-dark-600"></div>
+        <div class="fa-solid fa-pencil text-primary-dark-600"></div>
       <% end %>
     </div>
     <div class="p-1">
       <%= link_to board_column_path(column), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } do %>
-        <div class="bi bi-trash text-primary-dark-600"></div>
+        <div class="fa-solid fa-trash text-primary-dark-600"></div>
       <% end %>
     </div>
   </div>

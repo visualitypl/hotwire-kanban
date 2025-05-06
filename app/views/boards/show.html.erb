@@ -5,6 +5,24 @@
       <h1 class="text-primary-dark-500">
         <%= @board.name %>
       </h1>
+      <div>
+        <%= link_to 'New Column', new_board_board_column_path(@board), class: 'btn btn-outline-primary' %>
+      </div>
     </div>
+  </div>
+</div>
+
+<div class="board-container">
+  <div class="board-scroll">
+    <% @board_columns.each do |column| %>
+      <div class="board-column bg-primary-grey-100 border border-primary-grey-200">
+        <%= render partial: 'boards/column_header', locals: { column: column } %>
+        <div id= <%= dom_id(column, :column_body) %>, class="board-column-body">
+          <% column.cards.order(:position).each do |card| %>
+            <div> card.title </div>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
   </div>
 </div>
