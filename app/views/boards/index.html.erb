@@ -1,0 +1,47 @@
+<div class="w-100">
+  <div class="row">
+    <div class="d-flex justify-content-between">
+      <%= link_to 'New Board', new_board_path, class: 'btn btn-outline-primary invisible' %>
+      <h1 class="text-primary-dark-500">
+        Boards
+      </h1>
+      <div>
+        <%= link_to 'New Board', new_board_path, class: 'btn btn-outline-primary' %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <% @boards.each do |board| %>
+      <div class="col-3 my-3">
+        <div class="card border border-primary-grey-200">
+          <div class="card-header bg-primary-grey-200">
+            <div class="d-flex justify-content-between align-items-center">
+              <h5 class="card-title mb-0">
+                <%= link_to board.name, board, class: 'link-underline link-underline-opacity-0' %>
+              </h5>
+              <div class="d-flex gap-2">
+                <%= link_to edit_board_path(board), class: 'text-default' do %>
+                  <i class="bi bi-pencil text-primary-dark-600"></i>
+                <% end %>
+                <%= link_to board, data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: 'text-danger' do %>
+                  <i class="bi bi-trash text-primary-dark-600"></i>
+                <% end %>
+              </div>
+            </div>
+          </div>
+          <div class="card-body bg-primary-grey-100">
+            <div class="card-text">
+              <p>
+                <%= "Columns: #{board.board_columns.size}" %>
+              </p>
+              <p>
+                <%= "Cards: #{board.board_columns.joins(:cards).count}" %>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

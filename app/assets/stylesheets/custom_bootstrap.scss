@@ -1,0 +1,88 @@
+// Custom color variables
+$orange-100: #FFEDE3;
+$orange-200: #FFDCC8;
+$orange-300: #FFB991;
+$orange-400: #FFA775;
+$orange-500: #FF955A;
+$orange-600: #FF7223;
+
+$primary-dark-100: #E3E2E8;
+$primary-dark-200: #C6C5D0;
+$primary-dark-300: #8D8BA2;
+$primary-dark-400: #726F8A;
+$primary-dark-500: #5A586D;
+$primary-dark-600: #2A2933;
+
+$primary-grey-100: #EFF0F1;
+$primary-grey-200: #DFE1E3;
+$primary-grey-300: #C0C3C8;
+$primary-grey-400: #AEB3B8;
+$primary-grey-500: #9EA4AA;
+$primary-grey-600: #7E858D;
+
+$secondary-dark: #1D1D21;
+$secondary-grey: #7E858D;
+$light: #FDFDFD;
+
+// Link colors
+$link-color: $orange-600;
+$link-hover-color: darken($orange-600, 10%);
+$link-hover-decoration: underline;
+
+// Border radius
+$border-radius: 0;
+$border-radius-sm: 0;
+$border-radius-lg: 0;
+$btn-border-radius: 0;
+$btn-border-radius-sm: 0;
+$btn-border-radius-lg: 0;
+$input-border-radius: 0;
+$input-border-radius-sm: 0;
+$input-border-radius-lg: 0;
+
+// Override Bootstrap color variables
+$theme-colors: (
+  "primary": $orange-600,
+  "secondary": $primary-dark-600,
+  "success": $primary-grey-500,
+  "info": $secondary-grey,
+  "warning": $orange-500,
+  "danger": $secondary-dark,
+  "light": $light,
+  "dark": $primary-dark-600
+);
+
+// Extend Bootstrap color utilities to include custom shades
+$utilities-colors: (
+  "orange-100": $orange-100,
+  "orange-200": $orange-200,
+  "orange-300": $orange-300,
+  "orange-400": $orange-400,
+  "orange-500": $orange-500,
+  "orange-600": $orange-600,
+  "primary-dark-100": $primary-dark-100,
+  "primary-dark-200": $primary-dark-200,
+  "primary-dark-300": $primary-dark-300,
+  "primary-dark-400": $primary-dark-400,
+  "primary-dark-500": $primary-dark-500,
+  "primary-dark-600": $primary-dark-600,
+  "primary-grey-100": $primary-grey-100,
+  "primary-grey-200": $primary-grey-200,
+  "primary-grey-300": $primary-grey-300,
+  "primary-grey-400": $primary-grey-400,
+  "primary-grey-500": $primary-grey-500,
+  "primary-grey-600": $primary-grey-600,
+  "secondary-dark": $secondary-dark,
+  "secondary-grey": $secondary-grey,
+  "light": $light
+);
+
+// Import Bootstrap
+@import "bootstrap";
+
+// Custom color utilities
+@each $color, $value in $utilities-colors {
+  .text-#{$color} { color: $value !important; }
+  .bg-#{$color} { background-color: $value !important; }
+  .border-#{$color} { border-color: $value !important; }
+}

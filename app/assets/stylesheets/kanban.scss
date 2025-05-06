@@ -1,0 +1,60 @@
+body, html {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.gradient-background {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #C0C3C8, #FF7223);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5vh 5vw;
+  box-sizing: border-box;
+}
+
+.content-container {
+  padding: 20px;
+  width: 90vw;
+  height: 90vh;
+  overflow: auto;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.board-container {
+  width: 100%;
+  overflow-x: auto;
+  padding-bottom: 15px;
+  min-height: 80vh;
+}
+
+.board-header {
+  padding-left: 2vh;
+  padding-right: 2vh;
+}
+
+.board-scroll {
+  display: flex;
+  flex-wrap: nowrap;
+  min-height: 100%;
+  gap: 10px;
+  padding: 10px;
+}
+
+.board-column {
+  flex: 0 0 auto;
+  width: 250px;
+  min-height: 100%;
+  padding: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.board-column h2 {
+  margin-top: 0;
+  margin-bottom: 15px;
+}
