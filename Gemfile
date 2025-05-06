@@ -44,6 +44,7 @@ group :development, :test do
   # Static analysis for security vulnerabilities [https://brakemanscanner.org/]
   gem "brakeman", require: false
   gem "rspec-rails", "~> 8.0.0"
+  gem "factory_bot_rails", "~> 6.4"
 
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop-rails-omakase", require: false
