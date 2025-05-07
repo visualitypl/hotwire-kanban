@@ -33,17 +33,11 @@ body, html {
   min-height: 80vh;
 }
 
-.board-header {
-  padding-left: 2vh;
-  padding-right: 2vh;
-}
-
 .board-scroll {
   display: flex;
   flex-wrap: nowrap;
   min-height: 100%;
   gap: 10px;
-  padding: 10px;
 }
 
 .board-column {
@@ -52,9 +46,11 @@ body, html {
   min-height: 100%;
   padding: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #EFF0F1;
+  border: 1px solid #DFE1E3;
 }
 
-.board-column h2 {
-  margin-top: 0;
-  margin-bottom: 15px;
+.board-column-footer {
+  margin-top: 1rem;
+  text-align: center;
 }

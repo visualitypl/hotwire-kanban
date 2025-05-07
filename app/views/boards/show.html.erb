@@ -1,4 +1,4 @@
-<div class="board-header w-100">
+<div class="board-header w-100 px-3">
   <div class="row">
     <div class="d-flex justify-content-between">
       <%= link_to 'Back to boards list', boards_path, class: 'text-primary-grey-600 ms-2' %>
@@ -13,23 +13,9 @@
 </div>
 
 <div class="board-container">
-  <div class="board-scroll" data-controller="sortable" data-sortable-group-value="<%= @board.id %>" data-sortable-url-value="<%= update_card_positions_board_column_path(":id") %>">
-    <% @board_columns.each do |column| %>
-      <div class="board-column bg-primary-grey-100 border border-primary-grey-200" data-sortable-column-id-value="<%= column.id %>">
-        <%= render partial: 'boards/column_header', locals: { column: column } %>
-        <div id= <%= dom_id(column, :column_body) %>, class="board-column-body", data-sortable-target="cardsContainer">
-          <% column.cards.order(:position).each do |card| %>
-            <div class="my-1 draggable_card" data-sortable-id="<%= card.id %>">
-              <%= render partial: 'cards/card', locals: { card: card } %>
-            </div>
-          <% end %>
-        </div>
-        <div class="board-column-footer text-center mt-4">
-          <%= link_to new_card_url(board_column_id: column.id), class: 'text-success fs-1' do %>
-            <div class="fa-solid fa-plus"></div>
-          <% end %>
-        </div>
-      </div>
+  <div class="board-scroll p-3" data-controller="sortable" data-sortable-group-value="<%= @board.id %>" data-sortable-url-value="<%= update_card_positions_board_column_path(":id") %>">
+    <% @board_columns.each do |board_column| %>
+      <%= render partial: 'board_columns/board_column', locals: { board_column: board_column } %>
     <% end %>
   </div>
 </div>
