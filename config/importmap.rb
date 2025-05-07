@@ -7,3 +7,5 @@ pin "@hotwired/stimulus", to: "stimulus.min.js"
 pin "@hotwired/stimulus-loading", to: "stimulus-loading.js"
 pin "@fortawesome/fontawesome-free", to: "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/js/all.min.js", preload: true
 pin_all_from "app/javascript/controllers", under: "controllers"
+pin "@rails/request.js", to: "@rails--request.js.js" # @0.0.12
+pin "sortablejs" # @1.15.6

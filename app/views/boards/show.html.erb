@@ -13,13 +13,13 @@
 </div>
 
 <div class="board-container">
-  <div class="board-scroll">
+  <div class="board-scroll" data-controller="sortable" data-sortable-group-value="<%= @board.id %>" data-sortable-url-value="<%= update_card_positions_board_column_path(":id") %>">
     <% @board_columns.each do |column| %>
-      <div class="board-column bg-primary-grey-100 border border-primary-grey-200">
+      <div class="board-column bg-primary-grey-100 border border-primary-grey-200" data-sortable-column-id-value="<%= column.id %>">
         <%= render partial: 'boards/column_header', locals: { column: column } %>
-        <div id= <%= dom_id(column, :column_body) %>, class="board-column-body">
+        <div id= <%= dom_id(column, :column_body) %>, class="board-column-body", data-sortable-target="cardsContainer">
           <% column.cards.order(:position).each do |card| %>
-            <div class="my-1">
+            <div class="my-1 draggable_card" data-sortable-id="<%= card.id %>">
               <%= render partial: 'cards/card', locals: { card: card } %>
             </div>
           <% end %>

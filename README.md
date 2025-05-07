@@ -5,7 +5,7 @@ A simple application to experiment with Turbo.
 ## Setup
 
 This application uses:
-- ruby 3.3.0
+- ruby 3.3.3
 - sqlite 3
 - redis
 
