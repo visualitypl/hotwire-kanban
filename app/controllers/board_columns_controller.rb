@@ -1,12 +1,4 @@
 class BoardColumnsController < ApplicationController
-  def update_card_positions
-    column = BoardColumn.find(params[:column_id])
-    card = Card.find(params[:id])
-    card.update(board_column: column)
-    card.insert_at(params[:position].to_i + 1)
-    head :ok
-  end
-
   def new
     @board = Board.find(params[:board_id])
     @board_column = @board.board_columns.new

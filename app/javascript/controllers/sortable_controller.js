@@ -10,20 +10,46 @@ export default class extends Controller {
 
   static targets = ["cardsContainer"];
 
+  constructor(...args) {
+    super(...args);
+    this.sortables = [];
+  }
+
   connect() {
-    // Initialize Sortable on all card containers using targets
-    this.sortables = this.cardsContainerTargets.map(container => {
-      return Sortable.create(container, {
-        group: this.groupValue,
-        onEnd: this.onEnd.bind(this),
-        animation: 150
-      });
-    });
+    this.initializeSortable();
   }
 
   disconnect() {
-    // Destroy all sortables
-    this.sortables.forEach(sortable => sortable.destroy());
+    this.destroySortable();
+  }
+
+  initializeSortable() {
+    this.cardsContainerTargets.forEach(container => {
+      const existingSortable = this.sortables.find(sortable => sortable.el === container);
+      if (!existingSortable) {
+        const sortable = Sortable.create(container, {
+          group: this.groupValue,
+          onEnd: this.onEnd.bind(this),
+          animation: 150
+        });
+        this.sortables.push(sortable);
+      }
+    });
+  }
+
+  destroySortable() {
+    if (this.sortables) {
+      this.sortables.forEach(sortable => sortable.destroy());
+      this.sortables = [];
+    }
+  }
+
+  cardsContainerTargetConnected() {
+    this.initializeSortable();
+  }
+
+  cardsContainerTargetDisconnected() {
+    this.initializeSortable();
   }
 
   onEnd(event) {
@@ -32,8 +58,17 @@ export default class extends Controller {
     const newColumnId = to.closest('.board-column').dataset.sortableColumnIdValue;
     const url = this.urlValue.replace(":id", id);
 
+    const card = {
+      position: newIndex + 1,
+      board_column_id: newColumnId,
+    };
+
+    const body = {
+      card: card,
+    };
+
     put(url, {
-      body: JSON.stringify({ position: newIndex, column_id: newColumnId }),
+      body: JSON.stringify(body),
       headers: {
         'Content-Type': 'application/json',
         'X-CSRF-Token': document.querySelector("[name='csrf-token']").content

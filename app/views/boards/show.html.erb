@@ -13,7 +13,7 @@
 </div>
 
 <div class="board-container">
-  <div class="board-scroll p-3" data-controller="sortable" data-sortable-group-value="<%= @board.id %>" data-sortable-url-value="<%= update_card_positions_board_column_path(":id") %>">
+  <div class="board-scroll p-3" data-controller="sortable" data-sortable-group-value="<%= @board.id %>" data-sortable-url-value="<%= card_path(":id") %>">
     <% @board_columns.each do |board_column| %>
       <%= render partial: 'board_columns/board_column', locals: { board_column: board_column } %>
     <% end %>

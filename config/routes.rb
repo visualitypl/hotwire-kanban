@@ -2,11 +2,7 @@ Rails.application.routes.draw do
   root "boards#index"
 
   resources :boards, shallow: true do
-    resources :board_columns, except: [ :index, :show ] do
-      member do
-        put :update_card_positions
-      end
-    end
+    resources :board_columns, except: [ :index, :show ]
   end
 
   resources :cards,  except: [ :index ]
