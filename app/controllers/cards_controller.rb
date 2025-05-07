@@ -4,12 +4,14 @@ class CardsController < ApplicationController
   end
 
   def create
-    @card = Card.new(card_params)
+    service = Cards::CreateCardService.new(params: card_params)
 
     respond_to do |format|
-      if @card.save
+      if service.call
+        @card = service.card
         format.html { redirect_to board_url(@card.board), notice: "Card was successfully created." }
       else
+        @card = service.card
         format.html { render :new, status: :unprocessable_entity }
       end
     end
@@ -21,9 +23,10 @@ class CardsController < ApplicationController
 
   def update
     @card = Card.find(params[:id])
+    service = Cards::UpdateCardService.new(card: @card, params: card_params)
 
     respond_to do |format|
-      if @card.update(card_params)
+      if service.call
         format.html { redirect_to board_url(@card.board_column.board), notice: "Card was successfully updated." }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -34,7 +37,7 @@ class CardsController < ApplicationController
   def destroy
     @card = Card.find(params[:id])
     board = @card.board_column.board
-    @card.destroy!
+    Cards::DestroyCardService.new(card: @card).call
 
     respond_to do |format|
       format.html { redirect_to board_url(board), notice: "Card was successfully destroyed." }
