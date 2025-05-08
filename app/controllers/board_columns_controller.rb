@@ -40,6 +40,7 @@ class BoardColumnsController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to board_url(board), notice: "BoardColumn was successfully destroyed." }
+      format.turbo_stream { render turbo_stream: turbo_stream.remove(@board_column) }
     end
   end
 

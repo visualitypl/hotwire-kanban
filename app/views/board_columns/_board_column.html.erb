@@ -1,4 +1,4 @@
-<div class="board-column" data-sortable-column-id-value="<%= board_column.id %>">
+<div id= <%= dom_id(board_column)%> class="board-column" data-sortable-column-id-value="<%= board_column.id %>">
   <%= render partial: 'board_columns/column_header', locals: { board_column: board_column } %>
 
   <div id= <%= dom_id(board_column, :column_body) %> class="board-column-body" data-sortable-target="cardsContainer">
