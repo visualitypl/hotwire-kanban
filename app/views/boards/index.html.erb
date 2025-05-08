@@ -12,7 +12,7 @@
 
 <div class="row w-100">
   <% @boards.each do |board| %>
-    <div class="col-3 my-3">
+    <div id= <%= dom_id(board) %> class="col-3 my-3">
       <div class="card border border-primary-grey-200">
         <%= turbo_frame_tag dom_id(board, :edit) do %>
           <div class="card-header bg-primary-grey-200">
