@@ -1,0 +1,6 @@
+<%= turbo_stream.append 'boards' do %>
+  <%= render 'boards/board', board: @board %>
+<% end %>
+<%= turbo_stream.update dom_id(Board.new) do %>
+  <%= link_to 'New Board', new_board_path, class: 'btn btn-outline-primary' %>
+<% end %>
