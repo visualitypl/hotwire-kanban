@@ -1,7 +1,9 @@
 <h1 class="text-primary-dark-500">Edit Card</h1>
 
 <div class="row w-100 justify-content-center mt-3">
-  <div class="border border-primary-grey-200 bg-light p-2">
-    <%= render 'form' %>
-  </div>
+  <%= turbo_frame_tag dom_id(@card) do %>
+    <div class="border border-primary-grey-200 bg-light p-2">
+      <%= render 'form' %>
+    </div>
+  <% end %>
 </div>
