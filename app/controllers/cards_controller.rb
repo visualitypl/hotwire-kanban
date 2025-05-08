@@ -41,6 +41,7 @@ class CardsController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to board_url(board), notice: "Card was successfully destroyed." }
+      format.turbo_stream
     end
   end
 
