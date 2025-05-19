@@ -24,6 +24,11 @@ class Card < ApplicationRecord
   end
 
   def broadcast_card_updated
-    broadcast_replace_to board, target: dom_id(self), partial: "cards/card", locals: { card: self }
+    if previous_changes.key?("board_column_id")
+      broadcast_remove_to board, target: dom_id(self)
+      broadcast_append_to board, target: dom_id(board_column, :column_body), partial: "cards/card", locals: { card: self }
+    else
+      broadcast_replace_to board, target: dom_id(self), partial: "cards/card", locals: { card: self }
+    end
   end
 end
