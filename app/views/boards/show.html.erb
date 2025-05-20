@@ -6,16 +6,17 @@
         <%= @board.name %>
       </h1>
       <div>
-        <%= link_to 'New Column', new_board_board_column_path(@board), class: 'btn btn-outline-primary' %>
+        <%= link_to 'New Column', new_board_board_column_path(@board), data: { turbo_frame: dom_id(BoardColumn.new) }, class: 'btn btn-outline-primary' %>
       </div>
     </div>
   </div>
 </div>
 
 <div class="board-container">
-  <div class="board-scroll p-3" data-controller="sortable" data-sortable-group-value="<%= @board.id %>" data-sortable-url-value="<%= card_path(":id") %>">
+  <div id= <%= dom_id(@board, 'columns') %> class="board-scroll p-3" data-controller="sortable" data-sortable-group-value="<%= @board.id %>" data-sortable-url-value="<%= card_path(":id") %>">
     <% @board_columns.each do |board_column| %>
       <%= render partial: 'board_columns/board_column', locals: { board_column: board_column } %>
     <% end %>
+    <%= turbo_frame_tag dom_id(BoardColumn.new) %>
   </div>
 </div>

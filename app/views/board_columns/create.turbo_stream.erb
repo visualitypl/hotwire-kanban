@@ -1,0 +1,9 @@
+<%= turbo_stream.remove dom_id(BoardColumn.new) %>
+
+<%= turbo_stream.append dom_id(@board, 'columns') do %>
+  <%= render 'board_columns/board_column', board_column: @board_column %>
+<% end %>
+
+<%= turbo_stream.append dom_id(@board, 'columns') do %>
+  <%= turbo_frame_tag dom_id(BoardColumn.new) %>
+<% end %>
