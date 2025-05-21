@@ -518,79 +518,109 @@ Links: \
 https://www.rubydoc.info/gems/turbo-rails/Turbo/Broadcastable \
 https://www.hotrails.dev/turbo-rails/turbo-streams
 
-### Task 1: Adding broadcasts to columns
+### Task 1: Broadcast append new card
 
-1. Update `app/views/boards/show.html.erb` -
-   Add turbo stream tag to connect user to websocket channel at the top of file
- <details>
-    <summary>New line:</summary>
+This task shows how to broadcast the creation of a new card to all connected clients. When a card is created, it is automatically appended to the correct column in real time for everyone viewing the board.
 
-   ```erb
-      <%= turbo_stream_from dom_id(@board) %>
-   ```
-</details>
-
-also within the same file add turbo stream tag that we will use to append broadcasted columns
-<details>
-   <summary>New line in file placement:</summary>
+1. At the top of `app/views/boards/show.html.erb`, add:
+   <details>
+   <summary>Show code</summary>
 
    ```erb
-      <% @board_columns.each do |board_column| %>
-         <%= render partial: 'board_columns/board_column', locals: { board_column: board_column } %>
-      <% end %>
-      <%= turbo_frame_tag dom_id(@board, 'columns') # newly added line %>
-      <%= turbo_frame_tag dom_id(BoardColumn.new) %>
+   <%= turbo_stream_from @board %>
    ```
-</details>
+   </details>
 
-2. Update `app/models/board_column.rb` -
-   include ActionView::RecordIdentifier library to use `dom_id` in model,
-   add broadcast callback to model
-
-<details>
-   <summary>Updated file:</summary>
+2. In `app/models/card.rb`, add:
+   <details>
+   <summary>Show code</summary>
 
    ```rb
-   class BoardColumn < ApplicationRecord
    include ActionView::RecordIdentifier
 
-   # ... leave old code
+   after_create_commit :broadcast_card_created
 
-   broadcasts_to ->(board_column) { "board_#{board_column.board_id}" },
-             target: ->(board_column) { "columns_board_#{board_column.board.id}" },
-             inserts_by: :append
-   ```
-</details>
+   private
 
-
-### Task 2: Triggering columns broadcasts on card changes
-
-1. Update `app/models/card.rb` -
-   add callback that will touch and update associated columns while modifying cards
-
-<details>
-    <summary>Updated file:</summary>
-
-   ```rb
-   class Card < ApplicationRecord
-      include ActionView::RecordIdentifier
-
-      # ... leave old code
-
-      after_commit :touch_affected_board_columns
-
-      private
-
-      def touch_affected_board_columns
-         if previous_changes[:board_column_id].present?
-            board.board_columns.find_by(id: previous_changes[:board_column_id]&.first)&.touch
-            board.board_columns.find_by(id: previous_changes[:board_column_id]&.last)&.touch
-         else
-            board_column.touch
-         end
-      end
+   def broadcast_card_created
+     broadcast_append_to board, target: dom_id(board_column, :column_body), partial: "cards/card", locals: { card: self }
    end
    ```
+   </details>
+
+---
+
+### Task 2: Broadcast remove deleted card
+
+This task explains how to broadcast the removal of a card. When a card is deleted, it is instantly removed from the board for all users without a page reload.
+
+In `app/models/card.rb`, add:
+<details>
+<summary>Show code</summary>
+
+```rb
+after_destroy_commit :broadcast_card_destroyed
+
+def broadcast_card_destroyed
+  broadcast_remove_to board, target: dom_id(self)
+end
+```
 </details>
+
+---
+
+### Task 3: Broadcast replace updated card
+
+This task covers broadcasting updates to a card. When a card is edited (for example, its title or description changes), the card is replaced in place for all users in real time.
+
+In `app/models/card.rb`, add:
+<details>
+<summary>Show code</summary>
+
+```rb
+after_update_commit :broadcast_card_updated
+
+def broadcast_card_updated
+  broadcast_replace_to board, target: dom_id(self), partial: "cards/card", locals: { card: self }
+end
+```
+</details>
+
+---
+
+### Task 4: Fix broadcasting when moving card between columns
+
+This task explains how to handle the special case when a card is moved between columns. The card is removed from its old column and appended to the new column for all users, ensuring the UI stays in sync.
+
+Update the `broadcast_card_updated` method in `app/models/card.rb` to handle moving cards between columns:
+<details>
+<summary>Show code</summary>
+
+```rb
+def broadcast_card_updated
+  if previous_changes.key?("board_column_id")
+    broadcast_remove_to board, target: dom_id(self)
+    broadcast_append_to board, target: dom_id(board_column, :column_body), partial: "cards/card", locals: { card: self }
+  else
+    broadcast_replace_to board, target: dom_id(self), partial: "cards/card", locals: { card: self }
+  end
+end
+```
+</details>
+
+---
+
+### Task 5 (Bonus): Broadcast update of old and new column on card update
+
+This bonus task encourages you to broadcast updates of both the old and new columns when a card is moved. This ensures that the order of cards within each column stays correct for all users in real time.
+
+<details>
+    <summary>Show code</summary>
+
+    No solution here.
+    Try to implement it on your own. You can do it! 💪
+</details>
+
+---
 
 **Branch with broadcasts:** `git checkout turbo-broadcasts`
