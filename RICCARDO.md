@@ -4,6 +4,16 @@ Riccardo doensloaded the original repo.
 
 * `rbenv install 3.3.3`
 
+## Feedback for authors.
+
+1. Love the workshop. For me who I'm a backend dev, a little touch on FE side is great and new and hard enough to make it interesting.
+2. Love the github foldable triangles in the README, REALLY well done.
+3. I love even more the fact i can git checkout a different branch with solution to step 1,2,3.. as a workshop owner myself, thats a tech i'm actually exploring. I have more quesiton about this - over a beer! :)
+4. I honestly am a bit lost on seeing the solutions in [PR](https://github.com/visualitypl/hotwire-kanban/pulls). I dont get this. Would love the TITLE of the PRs to be numbered 1 to 6, it would help. Like, which is the task 4 for instance which i screwed up in my app? :) Please observe my screw up in its glory:
+
+![ricc step 4 screw up](image-1.png)
+
+
 ## hotwire
 
 has 3 parts:
@@ -75,3 +85,28 @@ which is cool!
 2. Make sure our server renders the oproiper turbo stream that will add the newly created card to the columna nd will render the plux button.
 
 
+## Task 5: Create new Boards with Turbo Streams
+
+No solution here.
+Try to implement it on your own. You can do it! 💪
+Or, checkout to branch with solution.
+
+You wish :)
+
+
+< i lost something here>
+
+At the end: `git checkout turbo-frames-creates`
+
+## Turbo Broadfcasts
+
+* action cable
+* WebSockets.
+
+Let your server push HTML and update all connected client webpages. good for:
+
+* Kanban Boards
+* Chat
+* Dashboards
+
+task
