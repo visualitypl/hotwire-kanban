@@ -1,4 +1,6 @@
-# Helvetic Ruby workshop
+# Helvetic Ruby workshop (Riccardo random and quick notes)
+
+dont complain about typos, im taking notes while coding and turning my hnead to look at slides.
 
 Riccardo doensloaded the original repo.
 
@@ -10,7 +12,7 @@ Riccardo doensloaded the original repo.
 2. Love the github foldable triangles in the README, REALLY well done.
 3. I love even more the fact i can git checkout a different branch with solution to step 1,2,3.. as a workshop owner myself, thats a tech i'm actually exploring. I have more quesiton about this - over a beer! :)
 4. I honestly am a bit lost on seeing the solutions in [PR](https://github.com/visualitypl/hotwire-kanban/pulls). I dont get this. Would love the TITLE of the PRs to be numbered 1 to 6, it would help. Like, which is the task 4 for instance which i screwed up in my app? :) Please observe my screw up in its glory:
-
+4. Michal asked me which workshops I curate. Here are my workshops ([appmod](https://codelabs.developers.google.com/codelabs/app-mod-workshop) and [Game with gemini](https://codelabs.developers.google.com/codelabs/gemini-games-firebase)).
 ![ricc step 4 screw up](image-1.png)
 
 
@@ -110,3 +112,10 @@ Let your server push HTML and update all connected client webpages. good for:
 * Dashboards
 
 task
+
+
+## Solution to multi columns.
+
+1. Solution1 would be to use "hot columns", get them from DB and render them this way. would be the simplest and more elewgant.
+   However, this wont work.
+2. this is how we did it commercially. We have a serializer .. harder solution to write, with lot of JS.
