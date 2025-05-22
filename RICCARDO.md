@@ -45,3 +45,17 @@ We need 2 methods:
 ## Exercise 1. lets implement one with EDIT IN PLACE
 
 done. Wow, it works!
+
+## exercise 2
+
+done
+
+## 3
+
+done
+
+woopsie! Content missing
+
+![Content missing error! Working as intended](image.png)
+
+there is a special frame called `_top`.
