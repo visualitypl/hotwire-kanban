@@ -59,3 +59,19 @@ woopsie! Content missing
 ![Content missing error! Working as intended](image.png)
 
 there is a special frame called `_top`.
+
+## Turbo Streams
+
+### TS.Task1 Task 1: Fix deleting cards
+
+
+
+## Task 4: Create new Cards with Turbo Streams
+
+Wow, this is the MOST advanced. You click on + icon, you dont want to create a create in place.
+which is cool!
+
+1. lets wrap the + button ina  turbo frame, this time for CREATE not EDIT.
+2. Make sure our server renders the oproiper turbo stream that will add the newly created card to the columna nd will render the plux button.
+
+

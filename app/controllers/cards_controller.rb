@@ -10,6 +10,8 @@ class CardsController < ApplicationController
       if service.call
         @card = service.card
         format.html { redirect_to board_url(@card.board), notice: "Card was successfully created." }
+        # Task 4.5 Added by Riccardo
+        format.turbo_stream
       else
         @card = service.card
         format.html { render :new, status: :unprocessable_entity }

@@ -16,3 +16,6 @@ run:
 refresh:
     #    rails assets:clobber
     rails assets:precompile
+
+download-original:
+    git clone https://github.com/visualitypl/hotwire-kanban.git hotwire-kanban-original
