@@ -12,3 +12,7 @@ run:
     echo "Running rails server..."
     # bundle exec rails server
     bin/dev
+
+refresh:
+    #    rails assets:clobber
+    rails assets:precompile

@@ -44,6 +44,9 @@ class BoardsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to boards_url, notice: "Board was successfully destroyed." }
     end
+    # Task 6 (TS.3) Added by Riccardo
+    format.turbo_stream { render turbo_stream: turbo_stream.remove(@board) }
+
   end
 
   private

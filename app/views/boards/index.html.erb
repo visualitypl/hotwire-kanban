@@ -1,56 +1,49 @@
 <div class="row w-100">
-  <div class="d-flex justify-content-between">
+<div class="d-flex justify-content-between">
     <%= link_to 'New Board', new_board_path, class: 'btn btn-outline-primary invisible' %>
     <h1 class="text-primary-dark-500">
-      Boards
+    Boards
     </h1>
     <div>
-      <%= link_to 'New Board', new_board_path, class: 'btn btn-outline-primary' %>
+    <%= link_to 'New Board', new_board_path, class: 'btn btn-outline-primary' %>
     </div>
-  </div>
+</div>
 </div>
 
 <div class="row w-100">
-  <% @boards.each do |board| %>
-    <div class="col-3 my-3">
-      <div class="card border border-primary-grey-200">
+<% @boards.each do |board| %>
+    <div id= <%= dom_id(board) %> class="col-3 my-3">
+    <div class="card border border-primary-grey-200">
 
-      <!-- [TASK3] added by riccardo on these lines -->
-      <%= turbo_frame_tag dom_id(board, :edit) do %>
-
-
+        <!-- [TASK3] added by riccardo on these lines -->
+        <%= turbo_frame_tag dom_id(board, :edit) do %>
         <div class="card-header bg-primary-grey-200">
-          <div class="d-flex justify-content-between align-items-center">
+            <div class="d-flex justify-content-between align-items-center">
             <h5 class="card-title mb-0">
-              <%#= link_to board.name, board, class: 'link-underline link-underline-opacity-0' %>
-              <%= link_to board.name, board, data: { turbo_frame: '_top'}, class: 'link-underline link-underline-opacity-0' %>
+                <%= link_to board.name, board, data: { turbo_frame: '_top'}, class: 'link-underline link-underline-opacity-0' %>
             </h5>
             <div class="d-flex gap-2">
-              <%= link_to edit_board_path(board), class: 'text-default' do %>
+                <%= link_to edit_board_path(board), class: 'text-default' do %>
                 <i class="fa-solid fa-pencil text-primary-dark-600"></i>
-              <% end %>
-              <%= link_to board, data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: 'text-danger' do %>
+                <% end %>
+                <%= link_to board, data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: 'text-danger' do %>
                 <i class="fa-solid fa-trash text-primary-dark-600"></i>
-              <% end %>
+                <% end %>
             </div>
-          </div>
+            </div>
         </div>
-
-        <!-- [TASK3] added by riccardo , praying im doing it on the right div -->
-
         <% end %>
-
         <div class="card-body bg-primary-grey-100">
-          <div class="card-text">
+        <div class="card-text">
             <p>
-              <%= "Columns: #{board.board_columns.size}" %>
+            <%= "Columns: #{board.board_columns.size}" %>
             </p>
             <p>
-              <%= "Cards: #{board.board_columns.joins(:cards).count}" %>
+            <%= "Cards: #{board.board_columns.joins(:cards).count}" %>
             </p>
-          </div>
         </div>
-      </div>
+        </div>
     </div>
-  <% end %>
+    </div>
+<% end %>
 </div>
