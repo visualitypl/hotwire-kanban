@@ -30,7 +30,9 @@ export default class extends Controller {
         const sortable = Sortable.create(container, {
           group: this.groupValue,
           onEnd: this.onEnd.bind(this),
-          animation: 150
+          animation: 150,
+          filter: 'input,textarea',
+          preventOnFilter: false,
         });
         this.sortables.push(sortable);
       }
