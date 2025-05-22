@@ -14,7 +14,7 @@ Riccardo doensloaded the original repo.
 4. I honestly am a bit lost on seeing the solutions in [PR](https://github.com/visualitypl/hotwire-kanban/pulls). I dont get this. Would love the TITLE of the PRs to be numbered 1 to 6, it would help. Like, which is the task 4 for instance which i screwed up in my app? :) Please observe my screw up in its glory:
 4. Michal asked me which workshops I curate. Here are my workshops ([appmod](https://codelabs.developers.google.com/codelabs/app-mod-workshop) and [Game with gemini](https://codelabs.developers.google.com/codelabs/gemini-games-firebase)).
 ![ricc step 4 screw up](image-1.png)
-
+5. As I've told Michal already, put ONE slide to explain the Schema/ORM, you have 3 classes and took me to understand that a board has many columns and a column has many cards. Easy peasy once you get it but its a `Bo > Co > Ca` and one ER diagram in one slide would go a long way. This would help me understand why in the card views i have all these columns thingies but not the board thingies... for instance. Plus where I work, columns are somewhat static (bug status) so i would expect 2 classes, not 3.
 
 ## hotwire
 
