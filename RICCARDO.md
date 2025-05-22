@@ -43,3 +43,5 @@ We need 2 methods:
 2. `dom_id()` method. works with all models. From `"Card.find(45)"` -> `card_45`.
 
 ## Exercise 1. lets implement one with EDIT IN PLACE
+
+done. Wow, it works!
