@@ -14,6 +14,11 @@
   <% @boards.each do |board| %>
     <div class="col-3 my-3">
       <div class="card border border-primary-grey-200">
+
+      <!-- [TASK3] added by riccardo on these lines -->
+      <%= turbo_frame_tag dom_id(board, :edit) do %>
+
+
         <div class="card-header bg-primary-grey-200">
           <div class="d-flex justify-content-between align-items-center">
             <h5 class="card-title mb-0">
@@ -29,6 +34,11 @@
             </div>
           </div>
         </div>
+
+        <!-- [TASK3] added by riccardo , praying im doing it on the right div -->
+
+        <% end %>
+
         <div class="card-body bg-primary-grey-100">
           <div class="card-text">
             <p>

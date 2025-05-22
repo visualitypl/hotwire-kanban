@@ -1,11 +1,11 @@
 <h1 class="text-primary-dark-500">Edit Board</h1>
 
 <div class="row w-100 justify-content-center mt-3">
-  <!-- added by riccardo on these 3 lines -->
-  <%#= turbo_frame_tag dom_id(@board, :edit) do %>
+  <!-- [TASK3] added by riccardo on these 3 lines -->
+  <%= turbo_frame_tag dom_id(@board, :edit) do %>
     <div class="border border-primary-grey-200 bg-light p-2">
       <%= render 'form' %>
     </div>
   <!-- added by riccardo on these 3 lines -->
-  <%# end %>
+  <% end %>
 </div>
