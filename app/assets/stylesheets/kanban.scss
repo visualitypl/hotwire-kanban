@@ -1,3 +1,5 @@
+@import "custom_bootstrap"; // TEMPORARY DIAGNOSTIC - Remove if theory confirmed
+
 body, html {
   height: 100%;
   margin: 0;
@@ -6,8 +8,12 @@ body, html {
 }
 
 .gradient-background {
+  // 🟢 Switched to the new purple-to-blue gradient using our SCSS variables!
+  //    Was: linear-gradient(135deg, #C0C3C8, #FF7223); (Grey to Orange)
   min-height: 100vh;
-  background: linear-gradient(135deg, #C0C3C8, #FF7223);
+  background: linear-gradient(135deg, $purple-500, $blue-400); // Purple to Blue!
+  //$gemini_gradient: linear-gradient(180deg, rgba($white, .15), rgba($white, 0));
+  //background: $gemini_gradient;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -46,8 +52,11 @@ body, html {
   min-height: 100%;
   padding: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  background-color: #EFF0F1;
-  border: 1px solid #DFE1E3;
+  // 🎨 Columns now subtly themed with light purple
+  //   Was: background-color: #EFF0F1; (Light Grey - $primary-grey-100)
+  //   Was: border: 1px solid #DFE1E3; (Slightly Darker Grey - $primary-grey-200)
+  background-color: $purple-100; // Very Light Purple
+  border: 1px solid $purple-200;   // Light Purple border
 }
 
 .board-column-footer {

@@ -14,8 +14,12 @@ run:
     bin/dev
 
 refresh:
-    #    rails assets:clobber
+    rails assets:clobber
     rails assets:precompile
+
+refresh-and-run:
+    just refresh
+    just run
 
 download-original:
     git clone https://github.com/visualitypl/hotwire-kanban.git hotwire-kanban-original

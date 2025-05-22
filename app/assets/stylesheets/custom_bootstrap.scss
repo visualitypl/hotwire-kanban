@@ -1,10 +1,26 @@
 // Custom color variables
-$orange-100: #FFEDE3;
-$orange-200: #FFDCC8;
-$orange-300: #FFB991;
-$orange-400: #FFA775;
-$orange-500: #FF955A;
-$orange-600: #FF7223;
+// $orange-100: #FFEDE3; // 🔴 Old orange, begone!
+// $orange-200: #FFDCC8;
+// $orange-300: #FFB991;
+// $orange-400: #FFA775;
+// $orange-500: #FF955A;
+// $orange-600: #FF7223;
+
+// 🟢 New Purple Shades (Inspired by Gemini - vibrant and cool)
+$purple-100: #EDE9FE; // Very Light Purple
+$purple-200: #DDD6FE; // Light Purple
+$purple-300: #C4B5FD; // Medium-Light Purple
+$purple-400: #A78BFA; // Medium Purple
+$purple-500: #8B5CF6; // Vibrant Purple (Primary Candidate)
+$purple-600: #7C3AED; // Dark Purple
+
+// 🟢 New Blue Shades (To complement the purple for the gradient feel)
+$blue-100: #E0F2FE;   // Very Light Blue
+$blue-200: #BAE6FD;   // Light Blue
+$blue-300: #7DD3FC;   // Medium-Light Blue (Info Candidate)
+$blue-400: #38BDF8;   // Vibrant Blue (Secondary Candidate)
+$blue-500: #0EA5E9;   // Medium-Dark Blue
+$blue-600: #0284C7;   // Dark Blue
 
 $primary-dark-100: #E3E2E8;
 $primary-dark-200: #C6C5D0;
@@ -24,9 +40,14 @@ $secondary-dark: #1D1D21;
 $secondary-grey: #7E858D;
 $light: #FDFDFD;
 
+// 🟢 Standard Semantic Colors (Good practice to define these)
+$green-500: #22C55E;  // For success messages/indicators
+$red-500: #EF4444;    // For danger/error messages/indicators
+$yellow-400: #FACC15; // For warnings
+
 // Link colors
-$link-color: $orange-600;
-$link-hover-color: darken($orange-600, 10%);
+$link-color: $purple-500; // 🟢 Updated to new primary purple
+$link-hover-color: darken($purple-500, 10%);
 $link-hover-decoration: underline;
 
 // Border radius
@@ -42,24 +63,39 @@ $input-border-radius-lg: 0;
 
 // Override Bootstrap color variables
 $theme-colors: (
-  "primary": $orange-600,
-  "secondary": $primary-dark-600,
-  "success": $primary-grey-500,
-  "info": $secondary-grey,
-  "warning": $orange-500,
-  "danger": $secondary-dark,
+  "primary": $purple-500,       // 🟢 Was $orange-600
+  "secondary": $blue-400,        // 🟢 Using vibrant blue for secondary
+  "success": $green-500,         // 🟢 Proper success color
+  "info": $blue-300,             // 🟢 Light blue for info
+  "warning": $yellow-400,        // 🟡 Standard warning yellow
+  "danger": $red-500,            // 🔴 Standard danger red
   "light": $light,
   "dark": $primary-dark-600
 );
 
 // Extend Bootstrap color utilities to include custom shades
 $utilities-colors: (
-  "orange-100": $orange-100,
-  "orange-200": $orange-200,
-  "orange-300": $orange-300,
-  "orange-400": $orange-400,
-  "orange-500": $orange-500,
-  "orange-600": $orange-600,
+  // "orange-100": $orange-100, // 🔴 Removed old orange utilities
+  // "orange-200": $orange-200,
+  // "orange-300": $orange-300,
+  // "orange-400": $orange-400,
+  // "orange-500": $orange-500,
+  // "orange-600": $orange-600,
+
+  "purple-100": $purple-100, // 🟢 Added new purple shades
+  "purple-200": $purple-200,
+  "purple-300": $purple-300,
+  "purple-400": $purple-400,
+  "purple-500": $purple-500,
+  "purple-600": $purple-600,
+
+  "blue-100": $blue-100,     // 🟢 Added new blue shades
+  "blue-200": $blue-200,
+  "blue-300": $blue-300,
+  "blue-400": $blue-400,
+  "blue-500": $blue-500,
+  "blue-600": $blue-600,
+
   "primary-dark-100": $primary-dark-100,
   "primary-dark-200": $primary-dark-200,
   "primary-dark-300": $primary-dark-300,
@@ -78,7 +114,7 @@ $utilities-colors: (
 );
 
 // Import Bootstrap
-@import "bootstrap";
+//@import "bootstrap";
 
 // Custom color utilities
 @each $color, $value in $utilities-colors {
@@ -86,3 +122,10 @@ $utilities-colors: (
   .bg-#{$color} { background-color: $value !important; }
   .border-#{$color} { border-color: $value !important; }
 }
+
+// 🟡 Suggestion for a global gradient background (apply to body or a main wrapper)
+// This might be better placed in a layout-specific SCSS file or application.scss.
+// body {
+//   background: linear-gradient(135deg, $purple-500 0%, $blue-400 100%);
+//   color: $light; // Ensure text is readable on the gradient
+// }
