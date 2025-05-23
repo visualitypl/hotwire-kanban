@@ -131,5 +131,6 @@ options:
   #   secretManager:
   #   - versionName: projects/${_PROJECT_ID}/secrets/${_RAILS_MASTER_KEY_SECRET_NAME}/versions/latest
   #     env: 'RAILS_MASTER_KEY_FROM_SECRET' # This env var will hold the path to the file containing the secret
+  logging: CLOUD_LOGGING_ONLY
 
 timeout: '1800s' # Timeout for the entire build (30 minutes)
