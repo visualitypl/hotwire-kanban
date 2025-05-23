@@ -1,6 +1,4 @@
-<!-- TS4.3 riccardo "Task 4: Create new Cards with Turbo Streams"  -->
 <%= turbo_frame_tag dom_id(board_column, :new_card) do %>
-  <!-- TS4.1 riccardo "Task 4: Create new Cards with Turbo Streams"  -->
     <%= link_to new_card_url(board_column_id: board_column.id), class: 'text-success fs-2' do %>
       <div class="fa-solid fa-plus"></div>
     <% end %>

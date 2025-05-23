@@ -1,5 +1,3 @@
-<!-- TS 4.6 e ultimo: Riccardo -->
-<%# This partial renders a link to create a new card within a specific board column %>
 <%= turbo_stream.append dom_id(@card.board_column, :column_body) do %>
     <%= render 'cards/card', card: @card %>
 <% end %>

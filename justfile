@@ -15,6 +15,7 @@ run:
 
 refresh:
     rails assets:clobber
+    rm -rf tmp/cache/assets
     rails assets:precompile
 
 refresh-and-run:
