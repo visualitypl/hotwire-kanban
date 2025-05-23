@@ -126,9 +126,10 @@ options:
   diskSizeGb: 100             # Specifies the disk size for the build VMs
   # Defines how secrets from Secret Manager are made available to build steps.
   # 🟡 Ensure the Cloud Build service account has 'Secret Manager Secret Accessor' role for the specified secret.
-  availableSecrets:
-    secretManager:
-    - versionName: projects/${_PROJECT_ID}/secrets/${_RAILS_MASTER_KEY_SECRET_NAME}/versions/latest
-      env: 'RAILS_MASTER_KEY_FROM_SECRET' # This env var will hold the path to the file containing the secret
+  # Your build failed to run: failed unmarshalling build config cloudbuild.yaml: unknown field "availableSecrets" in google.devtools.cloudbuild.v1.BuildOptions
+  # availableSecrets:
+  #   secretManager:
+  #   - versionName: projects/${_PROJECT_ID}/secrets/${_RAILS_MASTER_KEY_SECRET_NAME}/versions/latest
+  #     env: 'RAILS_MASTER_KEY_FROM_SECRET' # This env var will hold the path to the file containing the secret
 
 timeout: '1800s' # Timeout for the entire build (30 minutes)
