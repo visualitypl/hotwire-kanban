@@ -30,35 +30,35 @@ steps:
   # It requires RAILS_ENV=production and a SECRET_KEY_BASE.
   # If your application uses encrypted credentials (credentials.yml.enc) that are needed
   # during asset compilation, RAILS_MASTER_KEY must be available.
-  - name: 'ruby:${_RUBY_VERSION}-slim'
-    id: 'Assets-Precompile'
-    waitFor: ['Bundle-Install'] # Ensure gems are installed before precompiling
-    entrypoint: 'bash'
-    args:
-      - '-c'
-      - |
-        set -e
-        echo "🟡 Precompiling assets..."
-        # RAILS_MASTER_KEY_FROM_SECRET is an environment variable automatically set by Cloud Build.
-        # Its value is the path to a file containing the secret fetched from Secret Manager.
-        if [ -n "$RAILS_MASTER_KEY_FROM_SECRET" ] && [ -f "$RAILS_MASTER_KEY_FROM_SECRET" ]; then
-          export RAILS_MASTER_KEY=$(cat "$RAILS_MASTER_KEY_FROM_SECRET")
-          echo "🔑 RAILS_MASTER_KEY loaded from Secret Manager."
-        else
-          echo "⚠️ RAILS_MASTER_KEY_FROM_SECRET env var not set or file not found. Path: '$RAILS_MASTER_KEY_FROM_SECRET'."
-          echo "Asset precompilation might fail if it relies on encrypted credentials."
-          # Consider adding 'exit 1' here if RAILS_MASTER_KEY is critical for assets:precompile
-        fi
+  # - name: 'ruby:${_RUBY_VERSION}-slim'
+  #   id: 'Assets-Precompile'
+  #   waitFor: ['Bundle-Install'] # Ensure gems are installed before precompiling
+  #   entrypoint: 'bash'
+  #   args:
+  #     - '-c'
+  #     - |
+  #       set -e
+  #       echo "🟡 Precompiling assets..."
+  #       # RAILS_MASTER_KEY_FROM_SECRET is an environment variable automatically set by Cloud Build.
+  #       # Its value is the path to a file containing the secret fetched from Secret Manager.
+  #       if [ -n "$RAILS_MASTER_KEY_FROM_SECRET" ] && [ -f "$RAILS_MASTER_KEY_FROM_SECRET" ]; then
+  #         export RAILS_MASTER_KEY=$(cat "$RAILS_MASTER_KEY_FROM_SECRET")
+  #         echo "🔑 RAILS_MASTER_KEY loaded from Secret Manager."
+  #       else
+  #         echo "⚠️ RAILS_MASTER_KEY_FROM_SECRET env var not set or file not found. Path: '$RAILS_MASTER_KEY_FROM_SECRET'."
+  #         echo "Asset precompilation might fail if it relies on encrypted credentials."
+  #         # Consider adding 'exit 1' here if RAILS_MASTER_KEY is critical for assets:precompile
+  #       fi
 
-        # A dummy SECRET_KEY_BASE is often sufficient for assets:precompile.
-        # If your app needs a real one derived from RAILS_MASTER_KEY for asset compilation, adjust accordingly.
-        export SECRET_KEY_BASE_DUMMY=$(openssl rand -hex 64)
+  #       # A dummy SECRET_KEY_BASE is often sufficient for assets:precompile.
+  #       # If your app needs a real one derived from RAILS_MASTER_KEY for asset compilation, adjust accordingly.
+  #       export SECRET_KEY_BASE_DUMMY=$(openssl rand -hex 64)
 
-        RAILS_ENV=production SECRET_KEY_BASE=${SECRET_KEY_BASE_DUMMY} bundle exec rails assets:precompile
-        echo "✅ Assets precompiled successfully!"
-    # This environment variable is populated by the 'availableSecrets' option below.
-    # It will contain the path to the file where the secret content is stored.
-    secretEnv: ['RAILS_MASTER_KEY_FROM_SECRET']
+  #       RAILS_ENV=production SECRET_KEY_BASE=${SECRET_KEY_BASE_DUMMY} bundle exec rails assets:precompile
+  #       echo "✅ Assets precompiled successfully!"
+  #   # This environment variable is populated by the 'availableSecrets' option below.
+  #   # It will contain the path to the file where the secret content is stored.
+  #   #secretEnv: ['RAILS_MASTER_KEY_FROM_SECRET']
 
   # Step 3: Build Docker image 📦🐳
   # This step builds the Docker image using the Dockerfile in the current directory.
@@ -67,7 +67,7 @@ steps:
   #    It should COPY the precompiled assets from the 'public/assets' directory.
   - name: 'gcr.io/cloud-builders/docker'
     id: 'Docker-Build'
-    waitFor: ['Assets-Precompile'] # Ensure assets are compiled before building the image
+    #waitFor: ['Assets-Precompile'] # Ensure assets are compiled before building the image
     args:
       - 'build'
       - '--tag'
