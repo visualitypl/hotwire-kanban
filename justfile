@@ -47,3 +47,8 @@ run-prod-with-sqlite3:
     # DATABASE_URL=sqlite3://storage/production.sqlite3 RAILS_ENV=production rails db:migrate
     DATABASE_URL=sqlite3:///`pwd`/storage/production.sqlite3 RAILS_ENV=production rails db:migrate
     DATABASE_URL=sqlite3:///`pwd`/storage/production.sqlite3 RAILS_ENV=production rails s -p 8080
+
+build-and-submit-manhouse:
+    bin/submit-to-cloud-build.sh
+    # builds and runs in production mode on port 8080
+    bin/deploy-to-cloud-run.sh

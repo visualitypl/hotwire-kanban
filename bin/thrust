@@ -2,4 +2,5 @@
 require "rubygems"
 require "bundler/setup"
 
+#  By default, Thruster will listen on port 80, while Puma will stay on port 3000
 load Gem.bin_path("thruster", "thrust")

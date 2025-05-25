@@ -65,5 +65,23 @@ group :development do
   gem "web-console"
 end
 
-# postgresql
-gem 'pg', '~> 1.4'
+# postgresql - copiato da https://github.com/chap/rails-8-beta1/blob/main/Gemfile
+# fails dockerization, dont know why!!!
+gem "pg", "~> 1.1"
+
+
+# 73.52 An error occurred while installing pg (1.5.9), and Bundler cannot continue.
+# 73.52
+# 73.52 In Gemfile:
+# 73.52   pg
+# ------
+# Dockerfile:43
+# --------------------
+#   42 |     COPY Gemfile Gemfile.lock ./
+#   43 | >>> RUN bundle install && \
+#   44 | >>>     rm -rf ~/.bundle/ "${BUNDLE_PATH}"/ruby/*/cache "${BUNDLE_PATH}"/ruby/*/bundler/gems/*/.git && \
+#   45 | >>>     bundle exec bootsnap precompile --gemfile
+#   46 |
+# --------------------
+# ERROR: failed to solve: process "/bin/sh -c bundle install &&     rm -rf ~/.bundle/ \"${BUNDLE_PATH}\"/ruby/*/cache \"${BUNDLE_PATH}\"/ruby/*/bundler/gems/*/.git &&     bundle exec bootsnap precompile --gemfile" did not complete successfully: exit code: 5
+# 3408  /usr/bin/dockerd

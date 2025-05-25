@@ -1,6 +1,7 @@
 #!/bin/bash
 
 . .env
+
 set -euo pipefail
 
 # log error: DEFAULT 2025-05-25T13:39:46.428977Z raise ArgumentError, "Missing `secret_key_base` for '#{Rails.env}' environment, set this string with `bin/rails credentials:edit`"
