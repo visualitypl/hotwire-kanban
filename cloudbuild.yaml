@@ -99,7 +99,7 @@ availableSecrets:
     env: RAILS_KEY
     # I can use this to set the database URL too for postgres, eg, running a Card.all.count on rails runner to check the DB works like bin/rails runner 'puts Card.count'
   - versionName: projects/${PROJECT_ID}/secrets/kanban-board__DATABASE_URL/versions/latest
-  	env: CB_DATABASE_URL
+    env: CB_DATABASE_URL
 
 images:
   - "${_IMAGE_NAME}"
