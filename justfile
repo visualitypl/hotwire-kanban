@@ -52,3 +52,6 @@ build-and-submit-manhouse:
     bin/submit-to-cloud-build.sh
     # builds and runs in production mode on port 8080
     bin/deploy-to-cloud-run.sh
+
+run-prod-with-pgsql:
+    bin/run-prod-with-pgsql.sh

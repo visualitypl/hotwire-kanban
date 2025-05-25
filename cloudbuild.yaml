@@ -39,11 +39,12 @@ steps:
     #DATABASE_URL=$DATABASE_URL  bin/rails runner  'puts Card.count'
 
 
-  - id: "deploy to Cloud Run DEV (test)"
+  - id: "deploy to Cloud Run DEV (sqlite3)"
     name: "gcr.io/google.com/cloudsdktool/cloud-sdk"
     entrypoint: /bin/bash
     secretEnv:
       - "RAILS_KEY"
+      # Strictly useless in DEV.
       - "CB_DATABASE_URL"
     args:
       - "-c"
