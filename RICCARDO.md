@@ -1,6 +1,12 @@
+Websites:
+
+* 🤚🏻🏃🏻 manhouse: https://kanbard-board-on-cloud-run-manhouse-272932496670.europe-west1.run.app/
+* 🚘🏃🏻 autodeploy (but doesnt push to cloud run just yet):  https://kanbard-board-on-cloud-run-272932496670.europe-west1.run.app/
+* 🏗️  [Cloud Build](https://console.cloud.google.com/cloud-build/builds?e=-13802955&inv=1&invt=AbyW4w&project=palladius-genai)
+
 # Helvetic Ruby workshop (Riccardo random and quick notes)
 
-dont complain about typos, im taking notes while coding and turning my hnead to look at slides.
+dont complain about typos, im taking notes while coding and turning my head to look at slides.
 
 Riccardo doensloaded the original repo.
 

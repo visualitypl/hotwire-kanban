@@ -36,7 +36,30 @@ steps:
         DATABASE_URL=$$CB_DATABASE_URL \
         bin/rails runner \
         'puts Card.count'
-#DATABASE_URL=$DATABASE_URL  bin/rails runner  'puts Card.count'
+    #DATABASE_URL=$DATABASE_URL  bin/rails runner  'puts Card.count'
+
+
+  - id: "deploy to Cloud Run DEV (test)"
+    name: "gcr.io/google.com/cloudsdktool/cloud-sdk"
+    entrypoint: /bin/bash
+    secretEnv:
+      - "RAILS_KEY"
+      - "CB_DATABASE_URL"
+    args:
+      - "-c"
+      - |
+        gcloud run deploy ${_SERVICE_NAME}-dev \
+        --region ${_REGION} \
+        --image ${_IMAGE_NAME} \
+        --add-cloudsql-instances "${PROJECT_ID}:${_REGION}:${_INSTANCE_NAME}" \
+        --allow-unauthenticated
+#        --set-env-vars RAILS_MASTER_KEY=$$RAILS_KEY,DATABASE_URL=$$CB_DATABASE_URL,RAILS_ENV=development \
+        --set-env-vars RAILS_MASTER_KEY=$$RAILS_KEY,RAILS_ENV=development \
+        --platform managed \
+        --project ${PROJECT_ID} \
+        --max-instances 2 \
+        --cpu 2 \
+        --memory 2Gi
 
 # Written by AI - do NOT trust it blindly
 
@@ -86,7 +109,7 @@ options:
 substitutions:
   _REGION: europe-west1
   _SERVICE_NAME: kanbard-board-on-cloud-run
-  _INSTANCE_NAME: kanbard-board
+  _INSTANCE_NAME: kanbard-test # Name of the Cloud SQL instance
   # Docs wants this but I have plenty so i specify the app too: "rails-master-key"
   _SECRET_NAME: kanban-board__RAILS_MASTER_KEY
   _AR_REPO_NAME: cloud-run-source-deploy
