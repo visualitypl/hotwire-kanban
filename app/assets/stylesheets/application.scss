@@ -7,9 +7,7 @@
  * depending on specificity.
  *
  * Consider organizing styles into separate files for maintainability.
- * For variables to be available, custom_bootstrap should be imported first.
  */
 
-@import "custom_bootstrap";
 @import "kanban";
-//@import "custom_bootstrap";
+@import "custom_bootstrap";

@@ -5,7 +5,3 @@ import "controllers";
 import "popper";
 import "bootstrap";
 import "@fortawesome/fontawesome-free";
-
-// app/javascript/application.js
-Turbo.session.drive = false
-

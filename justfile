@@ -11,7 +11,7 @@ init:
 run:
     echo "Running rails server..."
     # bundle exec rails server
-    bin/dev
+    bin/dev -p 3001
 
 refresh:
     rails assets:clobber

@@ -10,7 +10,6 @@ class CardsController < ApplicationController
       if service.call
         @card = service.card
         format.html { redirect_to board_url(@card.board), notice: "Card was successfully created." }
-        # Task 4.5 Added by Riccardo
         format.turbo_stream
       else
         @card = service.card
@@ -43,9 +42,7 @@ class CardsController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to board_url(board), notice: "Card was successfully destroyed." }
-      # Task 4 (TS.1) Added by Riccardo
       format.turbo_stream
-
     end
   end
 
