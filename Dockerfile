@@ -11,8 +11,8 @@
 ARG RUBY_VERSION=3.3.3
 FROM docker.io/library/ruby:$RUBY_VERSION-slim AS base
 
-ARG MASTER_KEY
-ENV RAILS_MASTER_KEY=${MASTER_KEY}
+# ARG MASTER_KEY
+# ENV RAILS_MASTER_KEY=${MASTER_KEY}
 
 # Rails app lives here
 WORKDIR /rails
