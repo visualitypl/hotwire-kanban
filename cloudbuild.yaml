@@ -26,17 +26,17 @@ steps:
           --execute-now --wait && \
           gcloud run jobs delete  migrate-job --region ${_REGION} -q
 
-  - id: "test DB to PosgreSQL"
-    name: "gcr.io/google.com/cloudsdktool/cloud-sdk"
-    entrypoint: /bin/bash
-    secretEnv: [ "CB_DATABASE_URL"]
-    args:
-      - "-c"
-      - |
-        DATABASE_URL=$$CB_DATABASE_URL \
-        bin/rails runner \
-        'puts Card.count'
-    #DATABASE_URL=$DATABASE_URL  bin/rails runner  'puts Card.count'
+  # # /usr/bin/env: 'ruby': No such file or directory
+  # - id: "test DB to PosgreSQL"
+  #   name: "gcr.io/google.com/cloudsdktool/cloud-sdk"
+  #   entrypoint: /bin/bash
+  #   secretEnv: [ "CB_DATABASE_URL"]
+  #   args:
+  #     - "-c"
+  #     - |
+  #       DATABASE_URL=$$CB_DATABASE_URL \
+  #       bin/rails runner \
+  #       'puts Card.count'
 
 
   - id: "deploy to Cloud Run DEV (sqlite3)"
