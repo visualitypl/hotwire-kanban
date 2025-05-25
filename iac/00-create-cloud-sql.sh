@@ -13,7 +13,7 @@ echo "Using these docs: https://cloud.google.com/ruby/rails/run#automation-with-
 
 gcloud config set project $PROJECT_ID
 
-gcloud sql instances create $CLOUDSQL_INSTANCE_NAME \
+verde already done -- gcloud sql instances create $CLOUDSQL_INSTANCE_NAME \
     --database-version POSTGRES_12 \
     --tier db-f1-micro \
     --region $REGION
