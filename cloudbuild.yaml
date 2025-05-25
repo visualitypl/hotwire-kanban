@@ -28,6 +28,8 @@ steps:
 
 options:
   dynamicSubstitutions: true
+  logging: CLOUD_LOGGING_ONLY
+  timeout: 3600s
 
 substitutions:
   _REGION: europe-west1
