@@ -34,7 +34,8 @@ substitutions:
   _REGION: europe-west1
   _SERVICE_NAME: kanbard-board-on-cloud-run
   _INSTANCE_NAME: kanbard-board
-  _SECRET_NAME: rails-master-key
+  # Docs wants this but I have plenty so i specify the app too: "rails-master-key"
+  _SECRET_NAME: kanban-board__RAILS_MASTER_KEY
   _AR_REPO_NAME: cloud-run-source-deploy
   _IMAGE_NAME: ${_REGION}-docker.pkg.dev/${PROJECT_ID}/${_AR_REPO_NAME}/${_SERVICE_NAME}
   _CLOUD_SQL_CONNECTION_NAME: ${PROJECT_ID}:${_REGION}:${_INSTANCE_NAME}
