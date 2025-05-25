@@ -11,6 +11,8 @@
 ARG RUBY_VERSION=3.3.3
 FROM docker.io/library/ruby:$RUBY_VERSION-slim AS base
 
+# Suggested from https://cloud.google.com/ruby/rails/run#automation-with-cloudbuild
+# but it doesnt work locally on my Mac. It says its dangerous and wont let me run it!
 # ARG MASTER_KEY
 # ENV RAILS_MASTER_KEY=${MASTER_KEY}
 

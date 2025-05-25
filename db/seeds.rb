@@ -1,4 +1,14 @@
-board = Board.create!(name: "Kanban Board")
+
+# Created by Ricc to avoid duplication of boards
+# frozen_string_literal: true
+def find_or_create_board_by_name(name)
+  Board.where(name: name).first || Board.create!(name: name)
+end
+# db/seeds.rb
+
+
+board = find_or_create_board_by_name('🌱 Riccardo Kanban Board')
+#board = Board.create!(name: "🌱 Kanban Board")
 
 [ 'To Do', 'In Progress', 'Review', 'Done', 'Archived' ].each_with_index do |column_name, index|
   column = board.board_columns.create!(name: column_name)
@@ -8,7 +18,8 @@ board = Board.create!(name: "Kanban Board")
   end
 end
 
-board = Board.create!(name: "Visuality Workshops")
+#board = Board.create!(name: "🌱 Visuality Workshops")
+board = find_or_create_board_by_name('🌱 Visuality Workshops')
 
 col = board.board_columns.create!(name: 'Before')
 col.cards.create!(title: 'Workshop Checklist', description: "computer + Internet connection + ruby 3.3.0 + Git + Redis")
