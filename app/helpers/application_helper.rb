@@ -1,5 +1,4 @@
 module ApplicationHelper
-
   def env_with_emoji
     env = Rails.env
     case env

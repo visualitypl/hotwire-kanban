@@ -1,7 +1,7 @@
 <%= form_with(model: @card, local: true, class: 'col-12') do |form| %>
   <% if @card.errors.any? %>
     <% @card.errors.full_messages.each do |message| %>
-      <p class="text-center text-orange-600">
+      <p class="text-center text-blue-purple-600">
         <%= message %>
       </p>
     <% end %>

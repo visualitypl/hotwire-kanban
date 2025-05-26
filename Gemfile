@@ -67,7 +67,7 @@ end
 
 # postgresql - copiato da https://github.com/chap/rails-8-beta1/blob/main/Gemfile
 # fails dockerization, dont know why!!!
-gem 'pg', '~> 1.5', '>= 1.5.9'
+gem "pg", "~> 1.5", ">= 1.5.9"
 
 # 73.52 An error occurred while installing pg (1.5.9), and Bundler cannot continue.
 # 73.52

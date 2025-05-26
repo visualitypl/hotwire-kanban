@@ -1,10 +1,10 @@
 // Custom color variables
-$orange-100: #FFEDE3;
-$orange-200: #FFDCC8;
-$orange-300: #FFB991;
-$orange-400: #FFA775;
-$orange-500: #FF955A;
-$orange-600: #FF7223;
+$blue-purple-100: #E0E6F8;
+$blue-purple-200: #C1CCF1;
+$blue-purple-300: #839CE5;
+$blue-purple-400: #6485DE;
+$blue-purple-500: #456ED8;
+$blue-purple-600: #2657D1;
 
 $primary-dark-100: #E3E2E8;
 $primary-dark-200: #C6C5D0;
@@ -25,8 +25,8 @@ $secondary-grey: #7E858D;
 $light: #FDFDFD;
 
 // Link colors
-$link-color: $orange-600;
-$link-hover-color: darken($orange-600, 10%);
+$link-color: $blue-purple-600;
+$link-hover-color: darken($blue-purple-600, 10%);
 $link-hover-decoration: underline;
 
 // Border radius
@@ -42,11 +42,11 @@ $input-border-radius-lg: 0;
 
 // Override Bootstrap color variables
 $theme-colors: (
-  "primary": $orange-600,
+  "primary": $blue-purple-600,
   "secondary": $primary-dark-600,
   "success": $primary-grey-500,
   "info": $secondary-grey,
-  "warning": $orange-500,
+  "warning": $blue-purple-500,
   "danger": $secondary-dark,
   "light": $light,
   "dark": $primary-dark-600
@@ -54,12 +54,12 @@ $theme-colors: (
 
 // Extend Bootstrap color utilities to include custom shades
 $utilities-colors: (
-  "orange-100": $orange-100,
-  "orange-200": $orange-200,
-  "orange-300": $orange-300,
-  "orange-400": $orange-400,
-  "orange-500": $orange-500,
-  "orange-600": $orange-600,
+  "blue-purple-100": $blue-purple-100,
+  "blue-purple-200": $blue-purple-200,
+  "blue-purple-300": $blue-purple-300,
+  "blue-purple-400": $blue-purple-400,
+  "blue-purple-500": $blue-purple-500,
+  "blue-purple-600": $blue-purple-600,
   "primary-dark-100": $primary-dark-100,
   "primary-dark-200": $primary-dark-200,
   "primary-dark-300": $primary-dark-300,
