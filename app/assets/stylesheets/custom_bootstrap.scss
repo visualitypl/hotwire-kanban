@@ -1,28 +1,28 @@
 // Custom color variables
-$orange-100: #FFEDE3;
-$orange-200: #FFDCC8;
-$orange-300: #FFB991;
-$orange-400: #FFA775;
-$orange-500: #FF955A;
-$orange-600: #FF7223;
+$orange-100: #ffede3;
+$orange-200: #ffdcc8;
+$orange-300: #ffb991;
+$orange-400: #ffa775;
+$orange-500: #ff955a;
+$orange-600: #ff7223;
 
-$primary-dark-100: #E3E2E8;
-$primary-dark-200: #C6C5D0;
-$primary-dark-300: #8D8BA2;
-$primary-dark-400: #726F8A;
-$primary-dark-500: #5A586D;
-$primary-dark-600: #2A2933;
+$primary-dark-100: #e3e2e8;
+$primary-dark-200: #c6c5d0;
+$primary-dark-300: #8d8ba2;
+$primary-dark-400: #726f8a;
+$primary-dark-500: #5a586d;
+$primary-dark-600: #2a2933;
 
-$primary-grey-100: #EFF0F1;
-$primary-grey-200: #DFE1E3;
-$primary-grey-300: #C0C3C8;
-$primary-grey-400: #AEB3B8;
-$primary-grey-500: #9EA4AA;
-$primary-grey-600: #7E858D;
+$primary-grey-100: #eff0f1;
+$primary-grey-200: #dfe1e3;
+$primary-grey-300: #c0c3c8;
+$primary-grey-400: #aeb3b8;
+$primary-grey-500: #9ea4aa;
+$primary-grey-600: #7e858d;
 
-$secondary-dark: #1D1D21;
-$secondary-grey: #7E858D;
-$light: #FDFDFD;
+$secondary-dark: #1d1d21;
+$secondary-grey: #7e858d;
+$light: #fdfdfd;
 
 // Link colors
 $link-color: $orange-600;
@@ -42,39 +42,39 @@ $input-border-radius-lg: 0;
 
 // Override Bootstrap color variables
 $theme-colors: (
-  "primary": $orange-600,
-  "secondary": $primary-dark-600,
-  "success": $primary-grey-500,
-  "info": $secondary-grey,
-  "warning": $orange-500,
-  "danger": $secondary-dark,
-  "light": $light,
-  "dark": $primary-dark-600
+    "primary": $orange-600,
+    "secondary": $primary-dark-600,
+    "success": $primary-grey-500,
+    "info": $secondary-grey,
+    "warning": $orange-500,
+    "danger": $secondary-dark,
+    "light": $light,
+    "dark": $primary-dark-600,
 );
 
 // Extend Bootstrap color utilities to include custom shades
 $utilities-colors: (
-  "orange-100": $orange-100,
-  "orange-200": $orange-200,
-  "orange-300": $orange-300,
-  "orange-400": $orange-400,
-  "orange-500": $orange-500,
-  "orange-600": $orange-600,
-  "primary-dark-100": $primary-dark-100,
-  "primary-dark-200": $primary-dark-200,
-  "primary-dark-300": $primary-dark-300,
-  "primary-dark-400": $primary-dark-400,
-  "primary-dark-500": $primary-dark-500,
-  "primary-dark-600": $primary-dark-600,
-  "primary-grey-100": $primary-grey-100,
-  "primary-grey-200": $primary-grey-200,
-  "primary-grey-300": $primary-grey-300,
-  "primary-grey-400": $primary-grey-400,
-  "primary-grey-500": $primary-grey-500,
-  "primary-grey-600": $primary-grey-600,
-  "secondary-dark": $secondary-dark,
-  "secondary-grey": $secondary-grey,
-  "light": $light
+    "orange-100": $orange-100,
+    "orange-200": $orange-200,
+    "orange-300": $orange-300,
+    "orange-400": $orange-400,
+    "orange-500": $orange-500,
+    "orange-600": $orange-600,
+    "primary-dark-100": $primary-dark-100,
+    "primary-dark-200": $primary-dark-200,
+    "primary-dark-300": $primary-dark-300,
+    "primary-dark-400": $primary-dark-400,
+    "primary-dark-500": $primary-dark-500,
+    "primary-dark-600": $primary-dark-600,
+    "primary-grey-100": $primary-grey-100,
+    "primary-grey-200": $primary-grey-200,
+    "primary-grey-300": $primary-grey-300,
+    "primary-grey-400": $primary-grey-400,
+    "primary-grey-500": $primary-grey-500,
+    "primary-grey-600": $primary-grey-600,
+    "secondary-dark": $secondary-dark,
+    "secondary-grey": $secondary-grey,
+    "light": $light,
 );
 
 // Import Bootstrap
@@ -82,7 +82,49 @@ $utilities-colors: (
 
 // Custom color utilities
 @each $color, $value in $utilities-colors {
-  .text-#{$color} { color: $value !important; }
-  .bg-#{$color} { background-color: $value !important; }
-  .border-#{$color} { border-color: $value !important; }
+    .text-#{$color} {
+        color: $value !important;
+    }
+    .bg-#{$color} {
+        background-color: $value !important;
+    }
+    .border-#{$color} {
+        border-color: $value !important;
+    }
+}
+
+// Override Bootstrap CSS variables for focus states - use light grey
+:root {
+    --bs-focus-ring-color: rgba(192, 195, 200, 0.25) !important;
+    --bs-focus-ring-width: 0.2rem !important;
+}
+
+// Custom input focus styling - use light grey border and shadow
+.form-control:focus,
+.form-select:focus,
+.form-floating > .form-control:focus,
+.form-floating > .form-select:focus,
+.input-group > .form-control:focus,
+.input-group > .form-select:focus,
+input.form-control:focus,
+textarea.form-control:focus,
+select.form-control:focus,
+select.form-select:focus,
+input:focus,
+textarea:focus,
+select:focus {
+    border-color: #{$primary-grey-300} !important;
+    box-shadow: 0 0 0 0.2rem rgba(192, 195, 200, 0.25) !important;
+}
+
+// Override form check inputs (checkboxes, radios) - light grey border and shadow
+.form-check-input:focus {
+    border-color: #{$primary-grey-300} !important;
+    box-shadow: 0 0 0 0.2rem rgba(192, 195, 200, 0.25) !important;
+}
+
+// Remove default browser outline from all focus states
+*:focus,
+*:focus-visible {
+    outline: none !important;
 }
