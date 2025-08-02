@@ -1,11 +1,11 @@
 <div class="row w-100">
-  <div class="d-flex justify-content-between">
-    <%= link_to 'New Board', new_board_path, class: 'btn btn-outline-primary invisible' %>
-    <h1 class="text-primary-dark-500">
-      Boards
-    </h1>
-    <div>
-      <%= link_to 'New Board', new_board_path, class: 'btn btn-outline-primary' %>
+  <div class="d-flex align-items-center">
+    <div class="flex-grow-1 equal"></div>
+    <h1 class="text-center flex-grow-1 text-primary-dark-500">Boards</h1>
+    <div class="flex-grow-1 equal d-flex justify-content-end">
+      <div>
+        <%= link_to 'New Board', new_board_path, class: 'btn btn-outline-primary' %>
+      </div>
     </div>
   </div>
 </div>

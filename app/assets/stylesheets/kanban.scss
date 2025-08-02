@@ -54,3 +54,7 @@ body, html {
   margin-top: 1rem;
   text-align: center;
 }
+.equal {
+  flex: 1 1 0;      /* grow, shrink, base 0 = even thirds */
+  min-width: 0;
+}
