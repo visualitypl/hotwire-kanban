@@ -1,13 +1,15 @@
-<div class="d-flex flex-row">
-  <h5 class="d-flex flex-col">
-    <%= board_column.name %>
-  </h5>
-  <div class="d-flex flex-col ms-auto gap-2">
-      <%= link_to edit_board_column_path(board_column) do %>
-        <div class="fa-solid fa-pencil text-primary-dark-600"></div>
-      <% end %>
-      <%= link_to board_column_path(board_column), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } do %>
-        <div class="fa-solid fa-trash text-primary-dark-600"></div>
-      <% end %>
+<%= turbo_frame_tag dom_id(board_column, :edit) do %>
+  <div class="d-flex flex-row">
+    <h5 class="d-flex flex-col">
+      <%= board_column.name %>
+    </h5>
+    <div class="d-flex flex-col ms-auto gap-2">
+        <%= link_to edit_board_column_path(board_column) do %>
+          <div class="fa-solid fa-pencil text-primary-dark-600"></div>
+        <% end %>
+        <%= link_to board_column_path(board_column), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } do %>
+          <div class="fa-solid fa-trash text-primary-dark-600"></div>
+        <% end %>
+    </div>
   </div>
-</div>
+<% end %>
