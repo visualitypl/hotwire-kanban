@@ -16,7 +16,7 @@ class BoardColumnsController < ApplicationController
       if @board_column.save
         format.html { redirect_to board_url(@board), notice: "BoardColumn was successfully created." }
       else
-        format.html { render :new, status: :unprocessable_entity }
+        format.html { render :new, status: :unprocessable_content }
       end
     end
   end
@@ -28,7 +28,7 @@ class BoardColumnsController < ApplicationController
       if @board_column.update(board_column_params)
         format.html { redirect_to board_url(@board_column.board), notice: "BoardColumn was successfully updated." }
       else
-        format.html { render :edit, status: :unprocessable_entity }
+        format.html { render :edit, status: :unprocessable_content }
       end
     end
   end

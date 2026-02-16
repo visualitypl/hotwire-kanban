@@ -40,7 +40,7 @@ RSpec.describe "Cards", type: :request do
           post cards_url, params: { card: invalid_attributes }
         }.to change(board_column.cards, :count).by(0)
 
-        expect(response).to have_http_status(:unprocessable_entity)
+        expect(response).to have_http_status(:unprocessable_content)
       end
     end
   end
@@ -69,7 +69,7 @@ RSpec.describe "Cards", type: :request do
       it "renders a response with 422 status" do
         card = create(:card)
         patch card_url(card), params: { card: invalid_attributes }
-        expect(response).to have_http_status(:unprocessable_entity)
+        expect(response).to have_http_status(:unprocessable_content)
       end
     end
   end

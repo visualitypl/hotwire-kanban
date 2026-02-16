@@ -12,7 +12,7 @@ class CardsController < ApplicationController
         format.html { redirect_to board_url(@card.board), notice: "Card was successfully created." }
       else
         @card = service.card
-        format.html { render :new, status: :unprocessable_entity }
+        format.html { render :new, status: :unprocessable_content }
       end
     end
   end
@@ -29,7 +29,7 @@ class CardsController < ApplicationController
       if service.call
         format.html { redirect_to board_url(@card.board_column.board), notice: "Card was successfully updated." }
       else
-        format.html { render :edit, status: :unprocessable_entity }
+        format.html { render :edit, status: :unprocessable_content }
       end
     end
   end

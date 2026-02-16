@@ -50,7 +50,7 @@ RSpec.describe "/boards", type: :request do
         expect {
           post boards_url, params: { board: invalid_attributes }
         }.to change(Board, :count).by(0)
-        expect(response).to have_http_status(:unprocessable_entity)
+        expect(response).to have_http_status(:unprocessable_content)
       end
     end
   end
@@ -71,7 +71,7 @@ RSpec.describe "/boards", type: :request do
       it "renders a response with 422 status (i.e. to display the 'edit' template)" do
         board = create(:board)
         patch board_url(board), params: { board: invalid_attributes }
-        expect(response).to have_http_status(:unprocessable_entity)
+        expect(response).to have_http_status(:unprocessable_content)
       end
     end
   end

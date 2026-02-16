@@ -31,7 +31,7 @@ RSpec.describe "/board_bolumns", type: :request do
           post board_board_columns_url(board), params: { board_column: invalid_attributes }
         }.to change(BoardColumn, :count).by(0)
 
-        expect(response).to have_http_status(:unprocessable_entity)
+        expect(response).to have_http_status(:unprocessable_content)
       end
     end
   end
@@ -62,7 +62,7 @@ RSpec.describe "/board_bolumns", type: :request do
       it "renders a response with 422 status" do
         board_column = create(:board_column, name: 'Col 1', board: board)
         patch board_url(board), params: { board: invalid_attributes }
-        expect(response).to have_http_status(:unprocessable_entity)
+        expect(response).to have_http_status(:unprocessable_content)
       end
     end
   end

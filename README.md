@@ -463,7 +463,7 @@ https://turbo.hotwired.dev/handbook/streams
         format.turbo_stream
       else
         @card = service.card
-        format.html { render :new, status: :unprocessable_entity }
+        format.html { render :new, status: :unprocessable_content }
       end
     end
     ```

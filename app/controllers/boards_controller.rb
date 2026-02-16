@@ -23,7 +23,7 @@ class BoardsController < ApplicationController
       if @board.save
         format.html { redirect_to boards_url, notice: "Board was successfully created." }
       else
-        format.html { render :new, status: :unprocessable_entity }
+        format.html { render :new, status: :unprocessable_content }
       end
     end
   end
@@ -33,7 +33,7 @@ class BoardsController < ApplicationController
       if @board.update(board_params)
         format.html { redirect_to boards_url, notice: "Board was successfully updated." }
       else
-        format.html { render :edit, status: :unprocessable_entity }
+        format.html { render :edit, status: :unprocessable_content }
       end
     end
   end
