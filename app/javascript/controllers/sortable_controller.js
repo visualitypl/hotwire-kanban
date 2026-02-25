@@ -69,8 +69,9 @@ export default class extends Controller {
 
     put(url, {
       body: JSON.stringify(body),
+      contentType: 'application/json',
+      responseKind: 'json',
       headers: {
-        'Content-Type': 'application/json',
         'X-CSRF-Token': document.querySelector("[name='csrf-token']").content
       }
     });

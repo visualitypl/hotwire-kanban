@@ -28,6 +28,7 @@ class CardsController < ApplicationController
     respond_to do |format|
       if service.call
         format.html { redirect_to board_url(@card.board_column.board), notice: "Card was successfully updated." }
+        format.json { render json: { message: "Updated" }, status: :ok }
       else
         format.html { render :edit, status: :unprocessable_content }
       end
