@@ -43,6 +43,7 @@ class BoardsController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to boards_url, notice: "Board was successfully destroyed." }
+      format.turbo_stream { render turbo_stream: turbo_stream.remove(@board) }
     end
   end
 
