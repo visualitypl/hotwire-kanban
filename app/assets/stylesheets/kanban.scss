@@ -58,3 +58,14 @@ body, html {
   flex: 1 1 0;      /* grow, shrink, base 0 = even thirds */
   min-width: 0;
 }
+
+::view-transition-old(.draggable_card) {
+  animation: card-delete 200ms ease-out forwards;
+}
+
+@keyframes card-delete {
+  to {
+    opacity: 0;
+    transform: scale(0.97);
+  }
+}
